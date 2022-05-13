@@ -8,8 +8,34 @@ import unittest
 def urlifySol1(inStr):
 	return "%20".join(inStr.split(" "))
 
+
 def urlifySol2(inStr):
 	return inStr.strip().replace(" ","%20")
+
+
+def urlifySol3(inStr):
+	letters = list(inStr)
+	i = len(letters) - 1
+	j = i
+
+	while letters[i] == " ":
+		i -= 1
+
+	while j != i:
+		if letters[i] == " ":
+			letters[j-2] = "%"
+			letters[j-1] = "2"
+			lertters[j]  = "0"
+			j -= 2
+
+		else:
+			letters[j] = lertters[i]
+
+		j -= 1
+		i -= 1
+
+	return "".join(lertters)
+
 
 class Test(unittest.TestCase):
 	def test_urlifySol1(self):
@@ -17,6 +43,9 @@ class Test(unittest.TestCase):
 
 	def test_urlifySol2(self):
 		self.assertEqual("Mr%20John%20Smith",urlifySol2("Mr John Smith   "))
+
+	def test_urlifySol3(self):
+		self.assertEqual("Mr%20John%20Smith",urlifySol3("Mr John Smith   "))
 
 
 unittest.main()
