@@ -25,16 +25,14 @@ def urlifySol3(inStr):
 		if letters[i] == " ":
 			letters[j-2] = "%"
 			letters[j-1] = "2"
-			lertters[j]  = "0"
+			letters[j]  = "0"
 			j -= 2
-
 		else:
-			letters[j] = lertters[i]
-
-		j -= 1
+			letters[j] = letters[i]
 		i -= 1
+		j -= 1
 
-	return "".join(lertters)
+	return "".join(letters)
 
 
 class Test(unittest.TestCase):
@@ -42,10 +40,19 @@ class Test(unittest.TestCase):
 		self.assertEqual("Mr%20John%20Smith",urlifySol1("Mr John Smith"))
 
 	def test_urlifySol2(self):
-		self.assertEqual("Mr%20John%20Smith",urlifySol2("Mr John Smith   "))
+		self.assertEqual("Mr%20John%20Smith",urlifySol2("Mr John Smith    "))
 
 	def test_urlifySol3(self):
-		self.assertEqual("Mr%20John%20Smith",urlifySol3("Mr John Smith   "))
+		self.assertEqual("Mr%20John%20Smith",urlifySol3("Mr John Smith    "))
 
 
-unittest.main()
+# unittest.main()
+
+if __name__ == "__main__" :
+
+	import sys
+
+	if len(sys.argv) > 1:
+		print(urlifySol3(sys.argv[-1]))
+	else:
+		unittest.main()
