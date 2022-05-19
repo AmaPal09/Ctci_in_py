@@ -23,10 +23,32 @@ def string_compressor(inStr):
 	if len(inStr) <= 1:
 		return inStr
 
-
-	prevChar = ""
-	prevCharCtr = 0
-	compressedArray = []
 	i = 0
+	prevChar = inStr[i]
+	prevCharCtr = 1
+	compressedArray = []
+	i += 1
+
+	while i < len(inStr):
+		if prevChar != inStr[i]:
+			compressedArray.append(prevChar)
+			compressedArray.append(str(prevCharCtr))
+			prevChar = inStr[i]
+			prevCharCtr = 1
+		else:
+			prevCharCtr += 1
+		i += 1
+
+	compressedArray.append(prevChar)
+	compressedArray.append(str(prevCharCtr))
+
+	if len(compressedArray) >= len(inStr):
+		return inStr
+	else:
+		return "".join(compressedArray)
 
 
+if __name__ == "__main__":
+	import sys
+
+	print(string_compressor(sys.argv[-1]))
