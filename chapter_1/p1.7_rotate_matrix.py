@@ -77,44 +77,44 @@ def rotate_matrix(in_Sq_matrix):
 	return in_Sq_matrix
 
 
-def convert_inStr_to_List(inStr):
-	if inStr[0] != '[' or inStr[-1] != ']':
-		return in_list
+# def convert_inStr_to_List(inStr):
+# 	if inStr[0] != '[' or inStr[-1] != ']':
+# 		return in_list
 
-	print(inStr)
-	converted_list = []
-	list_open = False
-	list_close = False
-	listStr = ""
+# 	print(inStr)
+# 	converted_list = []
+# 	list_open = False
+# 	list_close = False
+# 	listStr = ""
 
-	for i in range(1, len(inStr)-1):
-		if inStr[i] == '[':
-			list_open = True
-			listStr += inStr[i]
-		elif inStr[i] == ']':
-			list_close = True
-			listStr += inStr[i]
-			if list_open and list_close:
-				converted_list.append(convert_inStr_to_List(listStr))
-			list_open = False
-			list_close = False
-			listStr = ""
-		else:
-			if list_open:
-				listStr+= inStr[i]
-			else:
-				if inStr[i].isdigit():
-					 converted_list.append(int(inStr[i]))
-				else:
-					if inStr[i] != ",":
-						converted_list.append(inStr[i])
+# 	for i in range(1, len(inStr)-1):
+# 		if inStr[i] == '[':
+# 			list_open = True
+# 			listStr += inStr[i]
+# 		elif inStr[i] == ']':
+# 			list_close = True
+# 			listStr += inStr[i]
+# 			if list_open and list_close:
+# 				converted_list.append(convert_inStr_to_List(listStr))
+# 			list_open = False
+# 			list_close = False
+# 			listStr = ""
+# 		else:
+# 			if list_open:
+# 				listStr+= inStr[i]
+# 			else:
+# 				if inStr[i].isdigit():
+# 					 converted_list.append(int(inStr[i]))
+# 				else:
+# 					if inStr[i] != ",":
+# 						converted_list.append(inStr[i])
 
-	return converted_list
-
-
-
-if __name__ == "__main__":
-	import sys
+# 	return converted_list
 
 
-	print(rotate_matrix(convert_inStr_to_List(sys.argv[-1])))
+
+# if __name__ == "__main__":
+# 	import sys
+
+
+# 	print(rotate_matrix(convert_inStr_to_List(sys.argv[-1])))
