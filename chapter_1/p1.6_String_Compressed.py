@@ -42,13 +42,38 @@ def string_compressor(inStr):
 	compressedArray.append(prevChar)
 	compressedArray.append(str(prevCharCtr))
 
-	if len(compressedArray) >= len(inStr):
+	if len(compressedArray) > len(inStr):
 		return inStr
 	else:
 		return "".join(compressedArray)
+
+import unittest
+
+class Test(unittest.TestCase):
+
+	test_cases = [
+		("aabcccccaaa", "a2b1c5a3"),
+		("abcd", "abcd"),
+		("aabbc", "aabbc"),
+		("", ""),
+		("aaAAAbCCcccaaAAA", "a2A3b1C2c3a2A3")
+	]
+
+	test_functions = [
+		string_compressor,
+	]
+
+	def test_string_compressor(self):
+		for f in self.test_functions:
+			for test_string, expected in self.test_cases:
+				assert f(test_string) == expected
+
 
 
 if __name__ == "__main__":
 	import sys
 
-	print(string_compressor(sys.argv[-1]))
+	if len(sys.argv) > 1:
+		print(string_compressor(sys.argv[-1]))
+	else:
+		unittest.main()
