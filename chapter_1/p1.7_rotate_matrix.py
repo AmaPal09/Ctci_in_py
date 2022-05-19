@@ -38,26 +38,20 @@
 
 def rotate_matrix(in_Sq_matrix):
 	if not in_Sq_matrix:
-		print("if 1")
 		return in_Sq_matrix
 
-	print(len(in_Sq_matrix))
-	print(len(in_Sq_matrix[0]))
 	if (len(in_Sq_matrix) == 0 or len(in_Sq_matrix[0]) == 0
 		or len(in_Sq_matrix) != len(in_Sq_matrix[0])):
-		print("if 2")
 		return in_Sq_matrix
 
 	arr_len = len(in_Sq_matrix)
 
 
 	for layer in range(arr_len//2):
-		print("for 1")
 		first = layer
-		last = arr_len - 1 - first
+		last = arr_len - 1 - layer
 
 		for i in range(first, last):
-			print("for 2")
 			offset = i - first
 
 			# temp <- top
@@ -69,10 +63,10 @@ def rotate_matrix(in_Sq_matrix):
 			in_Sq_matrix[last-offset][first] = in_Sq_matrix[last][last-offset]
 
 			# bottom <- right
-			in_Sq_matrix[last][last-offset] = in_Sq_matrix[i][last-offset]
+			in_Sq_matrix[last][last-offset] = in_Sq_matrix[i][last]
 
 			# right <- temp
-			in_Sq_matrix[i][last-offset] = temp
+			in_Sq_matrix[i][last] = temp
 
 	return in_Sq_matrix
 
@@ -118,3 +112,43 @@ def rotate_matrix(in_Sq_matrix):
 
 
 # 	print(rotate_matrix(convert_inStr_to_List(sys.argv[-1])))
+
+import unittest
+
+class Test(unittest.TestCase):
+	test_cases = [
+		([[1]], [[1]]),
+		([[]], [[]]),
+		([[ ], [ ]], [[], []]),
+		([], []),
+		([[1], [2,3]], [[1], [2,3]]),
+		([[1,2,3], [4,5,6], [7,8,9]], [[7,4,1], [8,5,2], [9,6,3]]),
+		(	[
+				[1 , 2 , 3 , 4 , 5 ],
+				[6 , 7 , 8 , 9 , 10],
+				[11, 12, 13, 14, 15],
+				[16, 17, 18, 19, 20],
+				[21, 22, 23, 24, 25]
+			],
+			[
+				[21, 16, 11, 6 , 1 ],
+				[22, 17, 12, 7 , 2 ],
+				[23, 18, 13, 8 , 3 ],
+				[24, 19, 14, 9 , 4 ],
+				[25, 20, 15, 10, 5 ]
+			]
+		)
+	]
+
+
+	test_functions = [
+		rotate_matrix
+	]
+
+
+	def test_rotation(self):
+		for f in self.test_functions:
+			for case, expected in self.test_cases:
+				assert f(case) == expected
+
+unittest.main()
