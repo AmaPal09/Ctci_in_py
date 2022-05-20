@@ -90,21 +90,6 @@ def remove_dups(head):
 	return head
 
 
-h1 = ListNode(1, ListNode(2, ListNode(3, ListNode(1, ListNode(4)))))
-
-def print_ll(head):
-	ll_array = []
-	curr = head
-	while curr:
-		ll_array.append(curr.value)
-		curr = curr.next
-	print("->".join(str(val) for val in ll_array))
-
-print_ll(h1)
-remove_dups(h1)
-print_ll(h1)
-
-
 def remove_dups_2(head):
 	curr_node = head
 
@@ -118,19 +103,6 @@ def remove_dups_2(head):
 				runner_node = runner_node.next
 
 		curr_node = curr_node.next
-
-h1 = ListNode(1, ListNode(2, ListNode(3, ListNode(1, ListNode(4)))))
-print_ll(h1)
-remove_dups_2(h1)
-print_ll(h1)
-
-ll1 = LinkedList([1,2,3,1,4])
-ll2 = LinkedList([1,2,3,4])
-remove_dups_2(ll1.head)
-print(ll1.values())
-print(ll2.values())
-print(ll1)
-
 
 
 class Test(unittest.TestCase):
@@ -146,7 +118,6 @@ class Test(unittest.TestCase):
 		remove_dups,
 		remove_dups_2
 	]
-
 
 	def test_removing_of_dups(self):
 		for f in self.test_functions:
