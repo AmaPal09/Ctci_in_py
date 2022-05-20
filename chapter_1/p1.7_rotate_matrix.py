@@ -71,6 +71,58 @@ def rotate_matrix(in_Sq_matrix):
 	return in_Sq_matrix
 
 
+def rotate_matrix_2(in_Sq_matrix):
+	n = len(in_Sq_matrix)
+
+	for i in range(n):
+		if len(in_Sq_matrix[i]) != n:
+			return in_Sq_matrix
+
+	for layer in range(n // 2):
+		first, last = layer, n - layer - 1
+
+		for i in range(first, last):
+			# save top
+			top = in_Sq_matrix[layer][i]
+
+			# top <- left
+			in_Sq_matrix[layer][i] = in_Sq_matrix[-i - 1][layer]
+
+			# left <-bottom
+			in_Sq_matrix[-i - 1][layer] = in_Sq_matrix[-layer - 1][-i - 1]
+
+			#bottom <- right
+			in_Sq_matrix[-layer - 1][-i - 1] = in_Sq_matrix[i][-layer - 1]
+
+			in_Sq_matrix[i][-layer-1] = top
+
+	return in_Sq_matrix
+
+
+
+def rotate_matrix_3(in_Sq_matrix):
+	n = len(in_Sq_matrix)
+
+	for i in range(n):
+		if len(in_Sq_matrix[i]) != n:
+			return in_Sq_matrix
+
+	result = [[0]*n for i in range(n)]
+
+	for i, j in zip(range(n), range(n-1,-1,-1)):
+		for k in range(n):
+			result[k][i] = in_Sq_matrix[j][k]
+	return result
+
+
+def rotate_matrix_4(in_Sq_matrix):
+
+	for i in range(n):
+		if len(in_Sq_matrix[i]) != n:
+			return in_Sq_matrix
+
+	return [list(reversed(row)) for row in zip(*in_Sq_matrix)]
+
 # def convert_inStr_to_List(inStr):
 # 	if inStr[0] != '[' or inStr[-1] != ']':
 # 		return in_list
@@ -142,13 +194,18 @@ class Test(unittest.TestCase):
 
 
 	test_functions = [
-		rotate_matrix
+		rotate_matrix,
+		# rotate_matrix_2,
+		rotate_matrix_3,
+		rotate_matrix_4
 	]
 
 
 	def test_rotation(self):
 		for f in self.test_functions:
+			print(f)
 			for case, expected in self.test_cases:
-				assert f(case) == expected
+				print(case)
+				self.assertEqual(expected, f(case))
 
 unittest.main()
