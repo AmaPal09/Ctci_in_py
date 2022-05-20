@@ -37,12 +37,40 @@
 # 4) " ", " " -> true
 #
 
+import unittest
+
 def is_substring(subStr, fullStr):
 	return subStr in fullStr
 
 def string_rotation(s1, s2):
+	if len(s1) != len(s2):
+		return False
+
+	if len(s1) == 0:
+		return True
+
 	full_string = s1+s1
 
 	return is_substring(s2, full_string)
 
 
+
+class Test(unittest.TestCase):
+	test_cases = [
+		(" ", "a", False),
+		("aabb", "aab", False),
+		("waterbottle", "erbottlewat", True),
+		(" ", " ", True)
+	]
+
+	test_functions = [
+		string_rotation
+	]
+
+	def test_string_rotation(self):
+		for f in self.test_functions:
+			for s1, s2, expected in self.test_cases:
+				assert f(s1,s2) == expected
+
+if __name__ == "__main__":
+	unittest.main()
