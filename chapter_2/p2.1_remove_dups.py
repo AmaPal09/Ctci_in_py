@@ -19,3 +19,45 @@
 # 1) Function is passed the head of the linked list.
 # 2) Not a method on the LL class
 #
+
+class ListNode:
+	def __init__(self, value=None, next_node=None):
+		self.value = value
+		self.next = next_node
+
+	def __str__(self):
+		return str(self.value)
+
+
+def remove_dups(head):
+	curr_node = head
+	prev_node = None
+	node_set = set()
+
+	while curr_node:
+		if curr_node.value in node_set:
+			prev_node.next = curr_node.next
+			curr_node = curr_node.next
+		else:
+			node_set.add(curr_node.value)
+			prev_node = curr_node
+			curr_node = curr_node.next
+
+	return head
+
+
+h1 = ListNode(1, ListNode(2, ListNode(3, ListNode(1, ListNode(4)))))
+
+def print_ll(head):
+	ll_array = []
+	curr = head
+	while curr:
+		ll_array.append(curr.value)
+		curr = curr.next
+	print("->".join(str(val) for val in ll_array))
+
+print_ll(h1)
+remove_dups(h1)
+print_ll(h1)
+
+
