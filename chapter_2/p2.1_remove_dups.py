@@ -61,3 +61,21 @@ remove_dups(h1)
 print_ll(h1)
 
 
+def remove_dups_2(head):
+	curr_node = head
+
+	while curr_node:
+		runner_node = curr_node
+
+		while runner_node.next:
+			if runner_node.next.value == curr_node.value:
+				runner_node.next = runner_node.next.next
+			else:
+				runner_node = runner_node.next
+
+		curr_node = curr_node.next
+
+h1 = ListNode(1, ListNode(2, ListNode(3, ListNode(1, ListNode(4)))))
+print_ll(h1)
+remove_dups(h1)
+print_ll(h1)
