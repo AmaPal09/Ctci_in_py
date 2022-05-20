@@ -25,8 +25,8 @@
 
 #
 # Assumption:
-# 1) Node is expect as return
-# 2) Function is passed with the head of the LL
+# 1) Node is expected as return
+# 2) Function is passed with the LL
 #
 
 # /*
@@ -34,3 +34,22 @@
 # 1) '' => ''
 # 2) 'a'->'e'->'c'->'d'->'c'->'a', 4 => 'c'->'d'->'c'->'a'
 # */
+
+from linked_list.py import LinkedList
+
+def return_kth_to_last(ll, k):
+	if len(ll) < k:
+		return None
+
+	head = ll.head
+	curr_node = head
+	k_displace_node = curr_node
+
+	for i in range(k):
+		k_displace_node = k_displace_node.next
+
+	while k_displace_node.next:
+		curr_node = curr_node.next
+		k_displace_node = k_displace_node.next
+
+	return curr_node
