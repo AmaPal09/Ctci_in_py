@@ -117,6 +117,8 @@ def rotate_matrix_3(in_Sq_matrix):
 
 def rotate_matrix_4(in_Sq_matrix):
 
+	n = len(in_Sq_matrix)
+
 	for i in range(n):
 		if len(in_Sq_matrix[i]) != n:
 			return in_Sq_matrix
@@ -157,15 +159,8 @@ def rotate_matrix_4(in_Sq_matrix):
 
 # 	return converted_list
 
-
-
-# if __name__ == "__main__":
-# 	import sys
-
-
-# 	print(rotate_matrix(convert_inStr_to_List(sys.argv[-1])))
-
 import unittest
+from copy import deepcopy
 
 class Test(unittest.TestCase):
 	test_cases = [
@@ -195,7 +190,7 @@ class Test(unittest.TestCase):
 
 	test_functions = [
 		rotate_matrix,
-		# rotate_matrix_2,
+		rotate_matrix_2,
 		rotate_matrix_3,
 		rotate_matrix_4
 	]
@@ -205,7 +200,13 @@ class Test(unittest.TestCase):
 		for f in self.test_functions:
 			print(f)
 			for case, expected in self.test_cases:
+				case = deepcopy(case)
 				print(case)
-				self.assertEqual(expected, f(case))
+				assert f(case) == expected
 
-unittest.main()
+
+if __name__ == "__main__":
+	import sys
+	if len(sys.argv) == 1:
+		unittest.main()
+	# 	print(rotate_matrix(convert_inStr_to_List(sys.argv[-1])))
