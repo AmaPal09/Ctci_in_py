@@ -25,3 +25,36 @@
 # ]
 #
 
+def make_zero_matrix(in_mat):
+	if len(in_mat) == 0:
+		return in_mat
+
+	if len(in_mat) == 1 and len(in_mat[0]) == 0:
+		return in_mat
+
+	for i in range(len(in_mat)):
+		if len(in_mat[0]) != len(in_mat[i]):
+			return in_mat
+
+	row_indices_with_zero = [False]*len(in_mat)
+	col_indices_with_zero = [False]*len(in_mat[0])
+
+	for r in range(len(in_mat)):
+		for c in range(len(in_mat[0])):
+			if in_mat[r][c] == 0:
+				row_indices_with_zero[r] = True
+				col_indices_with_zero[c] = True
+
+	# Make rows with 0, all 0
+	for r in range(len(in_mat)):
+		if row_indices_with_zero[r]:
+			for c in range(len(in_mat[0])):
+				in_mat[r][c] = 0
+
+	# Make cols with 0, all 0
+	for c in range(len(in_mat[0])):
+		if col_indices_with_zero[c]:
+			for r in range(len(in_mat)):
+				in_mat[r][c] = 0
+
+	return in_mat
