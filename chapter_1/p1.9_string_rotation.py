@@ -37,3 +37,12 @@
 # 4) " ", " " -> true
 #
 
+def is_substring(subStr, fullStr):
+	return subStr in fullStr
+
+def string_rotation(s1, s2):
+	full_string = s1+s1
+
+	return is_substring(s2, full_string)
+
+
