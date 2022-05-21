@@ -58,9 +58,6 @@ def return_kth_to_last(ll, k):
 	return curr_node
 
 
-ll1 = LinkedList([10, 20, 30, 40, 50])
-print(return_kth_to_last(ll1, 1))
-
 class Test(unittest.TestCase):
 	test_cases = [
 		([10, 20, 30, 40, 50], 1, 50),
