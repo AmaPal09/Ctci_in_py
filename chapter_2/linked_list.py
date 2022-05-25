@@ -41,6 +41,7 @@ class LinkedList:
 		else:
 			self.tail.next = ListNode(value)
 			self.tail = self.tail.next
+		return self.tail
 
 	def add_multiple(self, values):
 		for val in values:
