@@ -49,3 +49,7 @@ class LinkedList:
 
 	def values(self):
 		return [v.value for v in self]
+
+	def clear(self):
+		self.head = None
+		self.tail = None

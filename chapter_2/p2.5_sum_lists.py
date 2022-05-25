@@ -38,6 +38,8 @@
 # 6) 1 + 9->9 => 0->0->1
 # */
 
+import unittest
+
 from linked_list import ListNode, LinkedList
 
 def add_values(num1=0, num2=0, num3=0):
@@ -78,37 +80,68 @@ def sum_linked_list(head1, head2):
 	return total_ll.head
 
 
-ll1 = LinkedList()
-ll1.add_multiple([1,2,3])
-ll2 = LinkedList()
-ll2.add_multiple([3,2,1])
-ll3 = LinkedList()
-ll3.head = sum_linked_list(ll1.head, ll2.head)
-print(ll3)
+# ll1 = LinkedList()
+# ll1.add_multiple([1,2,3])
+# ll2 = LinkedList()
+# ll2.add_multiple([3,2,1])
+# ll3 = LinkedList()
+# ll3.head = sum_linked_list(ll1.head, ll2.head)
+# print(ll3)
 
-ll1.clear()
-ll3 = LinkedList()
-ll3.head = sum_linked_list(ll1.head, ll2.head)
-print(ll3)
+# ll1.clear()
+# ll3 = LinkedList()
+# ll3.head = sum_linked_list(ll1.head, ll2.head)
+# print(ll3)
 
-ll1.add_multiple([1,2,3])
-ll2.clear()
-ll2.add(0)
-ll3.head = sum_linked_list(ll1.head, ll2.head)
-print(ll3)
+# ll1.add_multiple([1,2,3])
+# ll2.clear()
+# ll2.add(0)
+# ll3.head = sum_linked_list(ll1.head, ll2.head)
+# print(ll3)
 
-ll1.clear()
-ll1.add_multiple([9,9,9])
-ll2.clear()
-ll2.add(1)
-# ll3 = LinkedList
-ll3.head = sum_linked_list(ll1.head, ll2.head)
-print(ll3)
+# ll1.clear()
+# ll1.add_multiple([9,9,9])
+# ll2.clear()
+# ll2.add(1)
+# # ll3 = LinkedList
+# ll3.head = sum_linked_list(ll1.head, ll2.head)
+# print(ll3)
 
-ll1.clear()
-ll1.add_multiple([9,9])
-ll2.clear()
-ll2.add_multiple([9,9])
-# ll3 = LinkedList
-ll3.head = sum_linked_list(ll1.head, ll2.head)
-print(ll3)
+# ll1.clear()
+# ll1.add_multiple([9,9])
+# ll2.clear()
+# ll2.add_multiple([9,9])
+# # ll3 = LinkedList
+# ll3.head = sum_linked_list(ll1.head, ll2.head)
+# print(ll3)
+
+
+class Test(unittest.TestCase):
+ 	test_cases = [
+ 		([1,2,3], [3,2,1], [4,4,4]),
+ 		(None ,[3,2,1], [3,2,1]),
+ 		([1,2,3], [0], [1,2,3]),
+ 		([9,9,9], [1], [0,0,0,1]),
+ 		([9,9], [9,9], [8,9,1])
+ 	]
+
+ 	test_functions = [
+ 		sum_linked_list
+ 	]
+
+ 	def test_sum_linked_list(self):
+ 		for f in self.test_functions:
+ 			for l1, l2, expected in self.test_cases:
+ 				ll1 = LinkedList()
+ 				if l1:
+ 					ll1.add_multiple(l1)
+ 				ll2 = LinkedList()
+ 				if l2:
+ 					ll2.add_multiple(l2)
+ 				ll3 = LinkedList()
+ 				ll3.head = f(ll1.head, ll2.head)
+ 				assert ll3.values() == expected
+
+
+if __name__ ==  "__main__":
+	unittest.main()
