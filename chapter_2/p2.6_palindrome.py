@@ -40,7 +40,6 @@ def reverse_ll(head):
 	return temp
 
 
-
 def check_if_palindrome(head1, head2):
 	if not head1 or not head2:
 		return False
