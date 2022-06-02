@@ -29,7 +29,7 @@
 # 1)
 #
 
-class three_in_stack():
+class Three_in_stack():
 	def __init__(self):
 		self.container = []
 		self.middle_top = 0
@@ -41,15 +41,15 @@ class three_in_stack():
 		self.middle_bottom += 1
 
 	def push_middle(self,value):
-		self.container.insert(middle_top,value)
+		self.container.insert(self.middle_top,value)
 		self.middle_bottom += 1
 
 	def push_bottom(self, value):
-		self.container.insert(middle_bottom, value)
+		self.container.insert(self.middle_bottom, value)
 
 
 	def is_top_empty(self):
-		if self.middle_top = 0:
+		if self.middle_top == 0:
 			return True
 		else:
 			return False
@@ -100,14 +100,39 @@ class three_in_stack():
 
 	def peek_middle(self):
 		if not self.is_middle_empty():
-			peek = self.container[middle_top]
+			peek = self.container[self.middle_top]
 			return peek
 		else:
 			return None
 
 	def peek_bottom(self):
 		if not self.is_bottom_empty():
-			peek = self.container[middle_bottom]
+			peek = self.container[self.middle_bottom]
 			return peek
 		else:
 			return None
+
+
+a3to1 = Three_in_stack()
+a3to1.push_top(3)
+a3to1.push_top(2)
+a3to1.push_top(1)
+a3to1.push_middle(6)
+a3to1.push_middle(5)
+a3to1.push_middle(4)
+a3to1.push_bottom(9)
+a3to1.push_bottom(8)
+a3to1.push_bottom(7)
+print(a3to1.container)
+print(a3to1.peek_top())
+print(a3to1.peek_middle())
+print(a3to1.peek_bottom())
+
+print(a3to1.pop_top())
+print(a3to1.peek_top())
+
+print(a3to1.pop_middle())
+print(a3to1.peek_middle())
+
+print(a3to1.pop_bottom())
+print(a3to1.peek_bottom())
