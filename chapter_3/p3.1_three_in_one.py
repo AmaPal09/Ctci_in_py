@@ -116,94 +116,96 @@ class Three_in_stack():
 
 
 class Test(unittest.TestCase):
-	a3to1 = Three_in_stack()
-	a3to1.push_top(3)
-	assert a3to1.container == [3]
-	a3to1.push_top(2)
-	a3to1.push_top(1)
-	assert a3to1.container == [1,2,3]
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 3
 
-	assert a3to1.peek_top() == 1
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 3
+	def test_three_in_one_stack(self):
+		a3to1 = Three_in_stack()
+		a3to1.push_top(3)
+		assert a3to1.container == [3]
+		a3to1.push_top(2)
+		a3to1.push_top(1)
+		assert a3to1.container == [1,2,3]
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 3
 
-	assert a3to1.pop_top() == 1
-	assert a3to1.middle_top == 2
-	assert a3to1.middle_bottom == 2
-	assert a3to1.is_top_empty() == False
-	a3to1.pop_top()
-	a3to1.pop_top()
-	assert a3to1.middle_top == 0
-	assert a3to1.middle_bottom == 0
-	assert a3to1.pop_top() == None
-	assert a3to1.middle_top == 0
-	assert a3to1.middle_bottom == 0
-	assert a3to1.peek_top() == None
-	assert a3to1.is_top_empty() == True
+		assert a3to1.peek_top() == 1
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 3
 
-	a3to1.push_top(3)
-	a3to1.push_top(2)
-	a3to1.push_top(1)
+		assert a3to1.pop_top() == 1
+		assert a3to1.middle_top == 2
+		assert a3to1.middle_bottom == 2
+		assert a3to1.is_top_empty() == False
+		a3to1.pop_top()
+		a3to1.pop_top()
+		assert a3to1.middle_top == 0
+		assert a3to1.middle_bottom == 0
+		assert a3to1.pop_top() == None
+		assert a3to1.middle_top == 0
+		assert a3to1.middle_bottom == 0
+		assert a3to1.peek_top() == None
+		assert a3to1.is_top_empty() == True
 
-	a3to1.push_middle(6)
-	assert a3to1.container == [1,2,3,6]
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 4
-	a3to1.push_middle(5)
-	a3to1.push_middle(4)
-	assert a3to1.container == [1,2,3,4,5,6]
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 6
+		a3to1.push_top(3)
+		a3to1.push_top(2)
+		a3to1.push_top(1)
 
-	assert a3to1.peek_middle() == 4
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 6
+		a3to1.push_middle(6)
+		assert a3to1.container == [1,2,3,6]
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 4
+		a3to1.push_middle(5)
+		a3to1.push_middle(4)
+		assert a3to1.container == [1,2,3,4,5,6]
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 6
 
-	assert a3to1.pop_middle() == 4
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 5
-	assert a3to1.is_middle_empty() == False
+		assert a3to1.peek_middle() == 4
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 6
 
-	assert a3to1.pop_middle() == 5
-	assert a3to1.pop_middle() == 6
-	assert a3to1.pop_middle() == None
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 3
+		assert a3to1.pop_middle() == 4
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 5
+		assert a3to1.is_middle_empty() == False
+
+		assert a3to1.pop_middle() == 5
+		assert a3to1.pop_middle() == 6
+		assert a3to1.pop_middle() == None
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 3
 
 
-	a3to1.push_middle(6)
-	a3to1.push_middle(5)
-	a3to1.push_middle(4)
+		a3to1.push_middle(6)
+		a3to1.push_middle(5)
+		a3to1.push_middle(4)
 
-	a3to1.push_bottom(9)
-	assert a3to1.container == [1,2,3,4,5,6,9]
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 6
-	a3to1.push_bottom(8)
-	a3to1.push_bottom(7)
-	assert a3to1.container == [1,2,3,4,5,6,7,8,9]
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 6
+		a3to1.push_bottom(9)
+		assert a3to1.container == [1,2,3,4,5,6,9]
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 6
+		a3to1.push_bottom(8)
+		a3to1.push_bottom(7)
+		assert a3to1.container == [1,2,3,4,5,6,7,8,9]
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 6
 
-	assert a3to1.peek_bottom() == 7
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 6
+		assert a3to1.peek_bottom() == 7
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 6
 
-	assert a3to1.pop_bottom() == 7
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 6
-	assert a3to1.is_bottom_empty() == False
+		assert a3to1.pop_bottom() == 7
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 6
+		assert a3to1.is_bottom_empty() == False
 
-	assert a3to1.pop_bottom() == 8
-	assert a3to1.pop_bottom() == 9
-	assert a3to1.pop_bottom() == None
-	assert a3to1.middle_top == 3
-	assert a3to1.middle_bottom == 6
+		assert a3to1.pop_bottom() == 8
+		assert a3to1.pop_bottom() == 9
+		assert a3to1.pop_bottom() == None
+		assert a3to1.middle_top == 3
+		assert a3to1.middle_bottom == 6
 
-	assert a3to1.peek_bottom() == None
-	assert a3to1.is_bottom_empty() == True
+		assert a3to1.peek_bottom() == None
+		assert a3to1.is_bottom_empty() == True
 
 
 if __name__ == "__main__":
