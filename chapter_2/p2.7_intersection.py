@@ -33,17 +33,18 @@
 #
 
 from linked_list import ListNode, LinkedList
+import unittest
 
 
-def Result:
-	def __init__(node, size):
+class Result:
+	def __init__(self, node, size):
 		self.tail = node
 		self.size = size
 
 
 def get_tail_n_size(head):
 	curr = head
-	size =
+	size = 0
 
 	while curr.next:
 		size +=	1
@@ -62,7 +63,7 @@ def jump_to_Kth_node(head, k):
 	return curr
 
 
-def get_intersecting_node(head1, head2);
+def get_intersecting_node(head1, head2):
 
 	if not head1 or not head2:
 		return None
@@ -93,3 +94,56 @@ def get_intersecting_node(head1, head2);
 
 
 
+class Test(unittest.TestCase):
+	def test1_get_intersecting_node(self):
+		A = ListNode('a')
+		B = ListNode('b')
+		C = ListNode('c')
+		D = ListNode('d')
+		E = ListNode('e')
+		F = ListNode('f')
+		G = ListNode('g')
+		A.next = B
+		B.next = C
+		C.next = D
+		D.next = E
+		E.next = F
+		F.next = G
+		G.next = None
+
+		X = ListNode('x')
+		Y = ListNode('y')
+		Z = ListNode('z')
+		X.next = Y
+		Y.next = Z
+		Z.next = E
+
+		assert get_intersecting_node(A,X) == E
+
+	def test2_get_intersecting_node(self):
+		A = ListNode('a')
+		B = ListNode('b')
+		C = ListNode('c')
+		D = ListNode('d')
+		E = ListNode('e')
+		F = ListNode('f')
+		G = ListNode('g')
+		A.next = B
+		B.next = C
+		C.next = D
+		D.next = E
+		E.next = F
+		F.next = G
+		G.next = None
+
+		X = ListNode('x')
+		Y = ListNode('y')
+		Z = ListNode('z')
+		X.next = Y
+		Y.next = Z
+		Z.next = None
+
+		assert get_intersecting_node(A,X) == None
+
+if __name__ == "__main__":
+	unittest.main()
