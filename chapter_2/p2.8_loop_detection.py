@@ -27,6 +27,7 @@
 #
 
 from linked_list import ListNode, LinkedList
+import unittest
 
 def is_a_loop(head):
 
@@ -36,7 +37,7 @@ def is_a_loop(head):
 	slow_ptr = head
 	fast_ptr = head
 
-	while fast_ptr or fast_ptr.next:
+	while fast_ptr and fast_ptr.next:
 		slow_ptr = slow_ptr.next
 		fast_ptr = fast_ptr.next.next
 
@@ -54,3 +55,36 @@ def is_a_loop(head):
 		fast_ptr = fast_ptr.next
 
 	return fast_ptr
+
+
+class Test(unittest.TestCase):
+	def test1_is_a_loop(self):
+		A = ListNode("a")
+		B = ListNode("b")
+		C = ListNode("c")
+		D = ListNode("d")
+		E = ListNode("e")
+		A.next = B
+		B.next = C
+		C.next = D
+		D.next = E
+		E.next = C
+
+		assert is_a_loop(A) == C
+
+	def test2_is_a_loop(self):
+		A = ListNode("a")
+		B = ListNode("b")
+		C = ListNode("c")
+		D = ListNode("d")
+		E = ListNode("e")
+		A.next = B
+		B.next = C
+		C.next = D
+		D.next = E
+		E.next = None
+
+		assert is_a_loop(A) == None
+
+if __name__ == "__main__":
+	unittest.main()
