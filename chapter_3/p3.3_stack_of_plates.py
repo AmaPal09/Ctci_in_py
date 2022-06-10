@@ -33,6 +33,7 @@
 #
 
 from stack import Stack
+import unittest
 
 class Stack_of_Plates:
 	def __init__(self, capacity):
@@ -64,7 +65,7 @@ class Stack_of_Plates:
 			return None
 		else:
 			val = last_stack.pop()
-			if len(last_stack) == 0:
+			if last_stack.size() == 0:
 				self._stack.pop()
 			return val
 
@@ -75,12 +76,56 @@ class Stack_of_Plates:
 		else:
 			last_stack.peek()
 
-	def peek_at_index(self, index):
+	def pop_at_index(self, index):
 		val = self._stack[index].pop()
 		if self._stack[index].size() == 0:
 			self._stack.pop(index)
 		return val
 
 
+class Test(unittest.TestCase):
 
+	def test_1_set_of_stack(self):
+		set_of_stack = Stack_of_Plates(4)
+		for i in range(13):
+		 	set_of_stack.push(i)
+		# for i in range(len(set_of_stack._stack)):
+		# 	print(set_of_stack._stack[i]._stack)
+		# print(len(set_of_stack._stack))
+		set_of_stack.pop()
+		# print(len(set_of_stack._stack))
+		self.assertEqual(len(set_of_stack._stack), 3)
+		self.assertEqual(set_of_stack.pop(), 11)
+		self.assertEqual(set_of_stack.pop_at_index(1), 7)
+		self.assertEqual(set_of_stack.pop_at_index(1), 6)
+		self.assertEqual(set_of_stack.pop_at_index(1), 5)
+		self.assertEqual(set_of_stack.pop_at_index(1), 4)
+		# print(len(set_of_stack._stack))
+		self.assertEqual(len(set_of_stack._stack), 2)
+		self.assertEqual(set_of_stack.pop(), 10)
+
+
+if __name__ == "__main__":
+	unittest.main()
+
+
+
+
+# set_of_stack = Stack_of_Plates(4)
+# for i in range(12):
+# 	set_of_stack.push(i)
+# for i in range(len(set_of_stack._stack)):
+# 	print(set_of_stack._stack[i]._stack)
+# print(set_of_stack.pop())
+# print(set_of_stack.pop())
+# for i in range(len(set_of_stack._stack)):
+# 	print(set_of_stack._stack[i]._stack)
+# print(set_of_stack.pop_at_index(1))
+# print(set_of_stack.pop_at_index(1))
+# for i in range(len(set_of_stack._stack)):
+# 	print(set_of_stack._stack[i]._stack)
+# print(set_of_stack.pop_at_index(1))
+# print(set_of_stack.pop_at_index(1))
+# for i in range(len(set_of_stack._stack)):
+# 	print(set_of_stack._stack[i]._stack)
 
