@@ -102,25 +102,3 @@ class Test(unittest.TestCase):
 
 if __name__ == "__main__":
 	unittest.main()
-
-
-
-
-# set_of_stack = Stack_of_Plates(4)
-# for i in range(12):
-# 	set_of_stack.push(i)
-# for i in range(len(set_of_stack._stack)):
-# 	print(set_of_stack._stack[i]._stack)
-# print(set_of_stack.pop())
-# print(set_of_stack.pop())
-# for i in range(len(set_of_stack._stack)):
-# 	print(set_of_stack._stack[i]._stack)
-# print(set_of_stack.pop_at_index(1))
-# print(set_of_stack.pop_at_index(1))
-# for i in range(len(set_of_stack._stack)):
-# 	print(set_of_stack._stack[i]._stack)
-# print(set_of_stack.pop_at_index(1))
-# print(set_of_stack.pop_at_index(1))
-# for i in range(len(set_of_stack._stack)):
-# 	print(set_of_stack._stack[i]._stack)
-
