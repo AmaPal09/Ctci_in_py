@@ -89,18 +89,13 @@ class Test(unittest.TestCase):
 		set_of_stack = Stack_of_Plates(4)
 		for i in range(13):
 		 	set_of_stack.push(i)
-		# for i in range(len(set_of_stack._stack)):
-		# 	print(set_of_stack._stack[i]._stack)
-		# print(len(set_of_stack._stack))
 		set_of_stack.pop()
-		# print(len(set_of_stack._stack))
 		self.assertEqual(len(set_of_stack._stack), 3)
 		self.assertEqual(set_of_stack.pop(), 11)
 		self.assertEqual(set_of_stack.pop_at_index(1), 7)
 		self.assertEqual(set_of_stack.pop_at_index(1), 6)
 		self.assertEqual(set_of_stack.pop_at_index(1), 5)
 		self.assertEqual(set_of_stack.pop_at_index(1), 4)
-		# print(len(set_of_stack._stack))
 		self.assertEqual(len(set_of_stack._stack), 2)
 		self.assertEqual(set_of_stack.pop(), 10)
 
